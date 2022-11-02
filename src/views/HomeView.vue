@@ -1,16 +1,22 @@
 <template>
     <div class="container">
-        <div class="title">
-            <h6>WALLET</h6>
+        <div class="d-flex justify-content-center">
+            <div class="title">
+                <h6>WALLET</h6>
+            </div>
         </div>
-        <div class="background">
-            <img src="../assets/mainbackground.svg" alt="" class="background">
+        <div class="back-text">
+            <div class="d-flex justify-content-center">
+                <div class="background">
+                    <img src="../assets/mainbackground.svg" alt="" class="background">
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <b class="text">A BETTER and EASIER way to track your income and expenses</b>
+            </div>
         </div>
-        <div class="text-center">
-            <b class="text">A BETTER and EASIER way to track your income and expenses</b>
-        </div>
-        <div class="button">
-            <router-link to="/" class="btn1">Get Started</router-link>
+        <div class="d-flex justify-content-center">
+            <router-link to="/login"><button class="btn1">Get Started</button></router-link>
         </div>
     </div>
 </template>
@@ -21,45 +27,27 @@
 
 <style scoped>
     .container{
-        display: grid; 
-        grid-template-columns: 100%; 
-        grid-template-rows: 1fr 1fr 1fr; 
-        gap: 0px 0px; 
-        justify-items: center; 
-        align-items: end; 
+        
     }
     .title{
+        margin-top: 20%;
         letter-spacing: 2px;
         font-family: Poppins;
         color: #7E7E7E;
-        justify-self: center; 
-        align-self: start; 
-        grid-area: 1 / 1 / 2 / 2; 
     }
-    .background{
-        justify-self: center; 
-        align-self: start; 
-        grid-area: 2 / 1 / 3 / 2; 
-    }
-    .text-center{
-        text-align: center;
-        width: 60%;
-        justify-self: center; 
-        align-self: center; 
-        grid-area: 3 / 1 / 4 / 2; 
+    .back-text{
+        margin-top: 25%;
     }
     .text{
+        text-align: center;
+        margin-top: 15%;
         letter-spacing: 2.5px;
         font-family: Poppins;
         font-size: 16px;
         color: #FFFFFF;
     }
-    .button {
-        justify-self: center; 
-        align-self: end; 
-        grid-area: 3 / 1 / 4 / 2; 
-    }
     .btn1{
+        margin-top: 40%;
         padding: 7px 80px;
         font-size: 16px;
         letter-spacing: 2px;
