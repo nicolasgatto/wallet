@@ -26,9 +26,6 @@
 </script>
 
 <style scoped>
-    .container{
-        
-    }
     .title{
         margin-top: 20%;
         letter-spacing: 2px;
@@ -36,9 +33,10 @@
         color: #7E7E7E;
     }
     .back-text{
-        margin-top: 25%;
+        margin-top: 15%;
     }
     .text{
+        width: 60%;
         text-align: center;
         margin-top: 15%;
         letter-spacing: 2.5px;
@@ -47,7 +45,7 @@
         color: #FFFFFF;
     }
     .btn1{
-        margin-top: 40%;
+        margin-top: 25%;
         padding: 7px 80px;
         font-size: 16px;
         letter-spacing: 2px;
