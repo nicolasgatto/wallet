@@ -69,8 +69,8 @@
         font-size: 12;
         width: 100%;
         padding: 10px;
-        border-color: rgba(10, 10, 10, .9);
-        background: #090909;
+        border: none;
+        background: #101010;
         font-family: Poppins;
         color: #7E7E7E;
     }
