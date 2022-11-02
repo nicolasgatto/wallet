@@ -12,6 +12,6 @@
     text-decoration: none;
   }
   body{
-    background-color: #000000;
+    background-color: #151515;
   }
 </style>
