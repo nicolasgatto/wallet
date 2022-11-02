@@ -88,7 +88,7 @@
         font-family: Poppins;
     }
     .form-label{
-        font-size: 10px;
+        font-size: 12px;
         letter-spacing: 2px;
         color: #7e7e7e;
         font-family: Poppins;
