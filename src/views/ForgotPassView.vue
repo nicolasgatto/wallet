@@ -2,12 +2,12 @@
     <div class="container">
         <div class="d-flex justify-content-center">
             <div class="title">
-                <h6>LOGIN</h6>
+                <h6>FORGOT PASSWORD</h6>
             </div>
         </div>
         <div class="d-flex justify-content-center">
             <div class="background">
-                <img src="../assets/loginbackground.svg" alt="" class="background">
+                <img src="../assets/forgotpassbackground.svg" alt="" class="background">
             </div>
         </div>
         <div class="d-flex justify-content-center">
@@ -17,27 +17,13 @@
                         <label class="form-label">Email</label>
                         <input type="text" placeholder="Enter Email" required />
                     </div>
-                    <div class="password">
-                        <label class="form-label">Password</label>
-                        <input type="password" placeholder="Enter Password" required />
-                    </div>
-                    <div class="forgot-pass">
-                        <router-link to="/forgotpass">
-                            <label class="text">
-                                Forgot Password?
-                            </label>
-                        </router-link>
-                    </div>
                     <div class="button">
-                        <button type="submit" class="btn1">Log In</button>
-                    </div>
-                    <div class="register">
-                        <p class="text">Don’t have an account yet? <router-link to="/register"><span class="regis-span">Register</span></router-link></p>
+                        <button type="submit" class="btn1">Send Link</button>
                     </div>
                     <div class="back">
-                        <router-link to="/">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#FFFFFF" class="bi bi-x" viewBox="0 0 16 16" color="#7e7e7e">
-                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                        <router-link to="/login">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#FFFFFF" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
                             </svg>
                         </router-link>
                     </div>
@@ -63,7 +49,7 @@
         margin-top: 10%;
     }
     .form{
-        margin-top: 15%;
+        margin-top: 60%;
     }
     input{
         font-size: 12;
@@ -82,25 +68,15 @@
         border-radius: 5px;
         outline: none;
     }
-    .text{
-        letter-spacing: 2px;
-        color: #7e7e7e;
-        font-family: Poppins;
-    }
     .form-label{
         font-size: 12px;
         letter-spacing: 2px;
         color: #7e7e7e;
         font-family: Poppins;
     }
-    .forgot-pass{
-        margin-top: 10%;
-        text-align: center;
-        font-size: 10px;
-    }
     .button{
         text-align: center;
-        margin-top: 10%;
+        margin-top: 15%;
     }
     .btn1{
         padding: 7px 80px;
@@ -111,16 +87,8 @@
         background-color: #FFFFFF;
         border-radius: 10px;
     }
-    .register{
-        text-align: center;
-        margin-top: 10%;
-        font-size: 10px;
-    }
-    .regis-span{
-        color: #FFFFFF;
-    }
     .back{
-        margin-top: 20%;
+        margin-top: 17%;
         text-align: center;
     }
 </style>

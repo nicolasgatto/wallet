@@ -2,12 +2,12 @@
     <div class="container">
         <div class="d-flex justify-content-center">
             <div class="title">
-                <h6>LOGIN</h6>
+                <h6>REGISTER</h6>
             </div>
         </div>
         <div class="d-flex justify-content-center">
             <div class="background">
-                <img src="../assets/loginbackground.svg" alt="" class="background">
+                <img src="../assets/registerbackground.svg" alt="" class="background">
             </div>
         </div>
         <div class="d-flex justify-content-center">
@@ -21,18 +21,11 @@
                         <label class="form-label">Password</label>
                         <input type="password" placeholder="Enter Password" required />
                     </div>
-                    <div class="forgot-pass">
-                        <router-link to="/forgotpass">
-                            <label class="text">
-                                Forgot Password?
-                            </label>
-                        </router-link>
-                    </div>
                     <div class="button">
-                        <button type="submit" class="btn1">Log In</button>
+                        <button type="submit" class="btn1">Register</button>
                     </div>
                     <div class="register">
-                        <p class="text">Don’t have an account yet? <router-link to="/register"><span class="regis-span">Register</span></router-link></p>
+                        <p class="text">Registered already? <router-link to="/login"><span class="regis-span">Login</span></router-link></p>
                     </div>
                     <div class="back">
                         <router-link to="/">
@@ -93,14 +86,9 @@
         color: #7e7e7e;
         font-family: Poppins;
     }
-    .forgot-pass{
-        margin-top: 10%;
-        text-align: center;
-        font-size: 10px;
-    }
     .button{
         text-align: center;
-        margin-top: 10%;
+        margin-top: 20%;
     }
     .btn1{
         padding: 7px 80px;
