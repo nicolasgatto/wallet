@@ -1,6 +1,11 @@
 <template>
-    <NavBar/>
-    <Balance/>
+    <div class="container">
+        <NavBar/>
+        <Balance/>
+        <div class="d-flex justify-content-center">
+            <img src="../assets/lobster.jpg" alt="">
+        </div>
+    </div>
 </template>
 
 <script>

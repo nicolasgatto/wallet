@@ -66,22 +66,13 @@
             .then((userCredential) => {
                 const user = userCredential.user;
                 console.log("logged")
+                console.log(user.email)
+                console.log(user.uid)
                 router.push('/home')
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-            });
-            onAuthStateChanged(auth, (user) => {
-            if (user) {
-                // User is signed in, see docs for a list of available properties
-                // https://firebase.google.com/docs/reference/js/firebase.User
-                console.log(user.email);
-                console.log(user.uid);
-                // ...
-            } else {
-                console.log("not logged")
-                }
             });
     };
     

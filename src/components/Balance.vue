@@ -1,18 +1,16 @@
 <template>
     <div class="container">
-        <div class="balance-text">
-
-        </div>
         <div class="balance">
             
         </div>
     </div>
 </template>
 
-<script>
+<script setup>
     
+
 </script>
 
-<style scoped>
+<style>
 
 </style>

@@ -45,21 +45,33 @@
     import {
         getAuth,
         createUserWithEmailAndPassword,
-        onAuthStateChanged
     } from '@firebase/auth';
+    import {
+        getDatabase,
+        set
+    } from "firebase/database";
     import { useRouter } from 'vue-router';
 
     const email = ref("");
     const password = ref("");
     const router = useRouter();
     const auth = getAuth()
+    const database = getDatabase();
 
     const register = () => {
+        function writeUserData(userId, email, balance) {
+            const db = getDatabase();
+            set(ref(db, 'users/' + userId), {
+                email: email,
+                balance: 100000,
+            });
+        }
         createUserWithEmailAndPassword(auth, email.value, password.value)
             .then((userCredential) => {
                 const user = userCredential.user;
                 console.log("registered")
                 router.push('/login')
+                writeUserData();
             })
             .catch((error) => {
                 const errorCode = error.code;
