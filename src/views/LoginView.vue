@@ -15,11 +15,11 @@
                 <form action="">
                     <div class="email">
                         <label class="form-label">Email</label>
-                        <input type="text" placeholder="Enter Email" required />
+                        <input type="text" placeholder="Enter Email" v-model="email" required />
                     </div>
                     <div class="password">
                         <label class="form-label">Password</label>
-                        <input type="password" placeholder="Enter Password" required />
+                        <input type="password" placeholder="Enter Password" v-model="password" required />
                     </div>
                     <div class="forgot-pass">
                         <router-link to="/forgotpass">
@@ -29,7 +29,7 @@
                         </router-link>
                     </div>
                     <div class="button">
-                        <button type="submit" class="btn1">Log In</button>
+                        <button @click="login" class="btn1">Log In</button>
                     </div>
                     <div class="register">
                         <p class="text">Don’t have an account yet? <router-link to="/register"><span class="regis-span">Register</span></router-link></p>
@@ -47,8 +47,25 @@
     </div>
 </template>
 
-<script>
+<script setup>
+    import { ref } from 'vue';
+    import {
+        getAuth,
+        signInWithEmailAndPassword,
+        onAuthStateChanged
+    } from '@firebase/auth';
+    import { useRouter } from 'vue-router';
 
+    const email = ref("");
+    const password = ref("");
+    const router = useRouter();
+
+    const login = () => {
+        signInWithEmailAndPassword(getAuth(), email.value, password.value)
+        .then((userCredential) => {
+            const user = userCredential.user;
+        })
+    }
 </script>
 
 <style scoped>

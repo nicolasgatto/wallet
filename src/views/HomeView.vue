@@ -1,15 +1,17 @@
 <template>
-    
+    <NavBar/>
+    <Balance/>
 </template>
 
 <script>
-    
+    import NavBar from '../components/NavBar.vue'
+    import Balance from '../components/Balance.vue'
 
     export default{
-        components: {}
+        components: {NavBar, Balance}
     }
 </script>
 
-<style>
+<style scoped>
 
 </style>
