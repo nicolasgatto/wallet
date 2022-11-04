@@ -15,11 +15,11 @@
                 <form action="">
                     <div class="email">
                         <label class="form-label">Email</label>
-                        <input type="text" placeholder="Enter Email" v-model="email" required />
+                        <input type="text" placeholder="Enter Email" v-model="email" id="email" required />
                     </div>
                     <div class="password">
                         <label class="form-label">Password</label>
-                        <input type="password" placeholder="Enter Password" v-model="password" required />
+                        <input type="password" placeholder="Enter Password" v-model="password" id="password" required />
                     </div>
                     <div class="forgot-pass">
                         <router-link to="/forgotpass">
@@ -29,7 +29,7 @@
                         </router-link>
                     </div>
                     <div class="button">
-                        <button @click="login" class="btn1">Log In</button>
+                        <button @click="login" type="button" class="btn1">Log In</button>
                     </div>
                     <div class="register">
                         <p class="text">Don’t have an account yet? <router-link to="/register"><span class="regis-span">Register</span></router-link></p>
@@ -48,24 +48,43 @@
 </template>
 
 <script setup>
-    import { ref } from 'vue';
     import {
         getAuth,
         signInWithEmailAndPassword,
         onAuthStateChanged
     } from '@firebase/auth';
     import { useRouter } from 'vue-router';
+    import { ref } from 'vue';
 
     const email = ref("");
     const password = ref("");
     const router = useRouter();
+    const auth = getAuth()
 
     const login = () => {
-        signInWithEmailAndPassword(getAuth(), email.value, password.value)
-        .then((userCredential) => {
-            const user = userCredential.user;
-        })
-    }
+        signInWithEmailAndPassword(auth, email.value, password.value)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log("logged")
+                router.push('/home')
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            });
+            onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in, see docs for a list of available properties
+                // https://firebase.google.com/docs/reference/js/firebase.User
+                console.log(user.email);
+                console.log(user.uid);
+                // ...
+            } else {
+                console.log("not logged")
+                }
+            });
+    };
+    
 </script>
 
 <style scoped>

@@ -22,7 +22,7 @@
                         <input type="password" placeholder="Enter Password" v-model="password" required />
                     </div>
                     <div class="button">
-                        <button @click="register" class="btn1">Register</button>
+                        <button @click="register" type="button" class="btn1">Register</button>
                     </div>
                     <div class="register">
                         <p class="text">Registered already? <router-link to="/login"><span class="regis-span">Login</span></router-link></p>
@@ -42,17 +42,29 @@
 
 <script setup>
     import { ref } from 'vue';
-    import { getAuth, createUserWithEmailAndPassword } from '@firebase/auth';
-import router from '@/router';
+    import {
+        getAuth,
+        createUserWithEmailAndPassword,
+        onAuthStateChanged
+    } from '@firebase/auth';
+    import { useRouter } from 'vue-router';
 
     const email = ref("");
     const password = ref("");
+    const router = useRouter();
+    const auth = getAuth()
 
     const register = () => {
-        createUserWithEmailAndPassword(getAuth(), email.value, password.value)
-        .then((userCredential) => {
-            const user = userCredential.user;
-        })
+        createUserWithEmailAndPassword(auth, email.value, password.value)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log("registered")
+                router.push('/login')
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            });
     }
 </script>
 
