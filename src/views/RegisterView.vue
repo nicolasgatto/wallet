@@ -41,37 +41,41 @@
 </template>
 
 <script setup>
-    import { ref } from 'vue';
     import {
         getAuth,
         createUserWithEmailAndPassword,
     } from '@firebase/auth';
     import {
-        getDatabase,
-        set
-    } from "firebase/database";
+        getFirestore,
+        doc,
+        setDoc
+    } from "firebase/firestore";
+    import { ref } from 'vue';
     import { useRouter } from 'vue-router';
 
     const email = ref("");
     const password = ref("");
     const router = useRouter();
     const auth = getAuth()
-    const database = getDatabase();
+    const db = getFirestore();
 
     const register = () => {
-        function writeUserData(userId, email, balance) {
-            const db = getDatabase();
-            set(ref(db, 'users/' + userId), {
-                email: email,
-                balance: 100000,
-            });
-        }
         createUserWithEmailAndPassword(auth, email.value, password.value)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log("registered")
+                console.log("Registered User Email: ", user.email)
+                console.log("Registered User UID: ", user.uid)
+                try {
+                    const docRef = setDoc(doc(db, "users", user.uid), {
+                        email: email.value,
+                        balance: 100000,
+                        id: user.uid
+                    });
+                    console.log("Document written with ID: ", docRef.id);
+                    } catch (e) {
+                    console.error("Error adding document: ", e);
+                    }
                 router.push('/login')
-                writeUserData();
             })
             .catch((error) => {
                 const errorCode = error.code;

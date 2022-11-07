@@ -4,6 +4,8 @@ import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import ForgotPassView from '../views/ForgotPassView.vue'
 import HomeView from '../views/HomeView.vue'
+import TransactionView from '../views/TransactionView.vue'
+import SettingsView from '../views/SettingsView.vue'
 
 const routes = [
   {
@@ -30,6 +32,16 @@ const routes = [
     path: '/home',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/home/transaction',
+    name: 'transaction',
+    component: TransactionView
+  },
+  {
+    path: '/home/settings',
+    name: 'settings',
+    component: SettingsView
   },
 ]
 

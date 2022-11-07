@@ -27,6 +27,7 @@
 
 <style scoped>
     .title{
+        letter-spacing: 2px;
         margin-top: 20%;
         letter-spacing: 2px;
         font-family: Poppins;
@@ -39,7 +40,7 @@
         width: 60%;
         text-align: center;
         margin-top: 15%;
-        letter-spacing: 2.5px;
+        letter-spacing: 2px;
         font-family: Poppins;
         font-size: 16px;
         color: #FFFFFF;

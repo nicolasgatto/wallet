@@ -50,11 +50,10 @@
 <script setup>
     import {
         getAuth,
-        signInWithEmailAndPassword,
-        onAuthStateChanged
+        signInWithEmailAndPassword
     } from '@firebase/auth';
-    import { useRouter } from 'vue-router';
     import { ref } from 'vue';
+    import { useRouter } from 'vue-router';
 
     const email = ref("");
     const password = ref("");
@@ -65,9 +64,8 @@
         signInWithEmailAndPassword(auth, email.value, password.value)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log("logged")
-                console.log(user.email)
-                console.log(user.uid)
+                console.log("Logged User Email: ", user.email)
+                console.log("Logged User UID: ", user.uid)
                 router.push('/home')
             })
             .catch((error) => {

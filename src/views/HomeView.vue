@@ -2,9 +2,6 @@
     <div class="container">
         <NavBar/>
         <Balance/>
-        <div class="d-flex justify-content-center">
-            <img src="../assets/lobster.jpg" alt="">
-        </div>
     </div>
 </template>
 
@@ -13,10 +10,10 @@
     import Balance from '../components/Balance.vue'
 
     export default{
-        components: {NavBar, Balance}
+        components: {NavBar, Balance},
     }
 </script>
 
 <style scoped>
-
+    
 </style>
