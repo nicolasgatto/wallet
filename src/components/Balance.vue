@@ -22,14 +22,14 @@
 
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            // https://firebase.google.com/docs/reference/js/firebase.User
             const uid = user.uid;
 
             getDoc(doc(db, "users", uid)).then(docSnap => {
                 if (docSnap.exists()) {
                     console.log("Document data:", docSnap.data());
                     const value = docSnap.get("balance");
-                    document.getElementById("balance").innerText = "$" + value;
+                    const commas = value.toLocaleString("en-US");
+                    document.getElementById("balance").innerText = "$ " + commas;
                 } else {
                     console.log("No such document!");
                 }
@@ -41,8 +41,9 @@
 
 <style scoped>
     span{
-        letter-spacing: 0.5px;
-        margin-top: 30%;
+        font-weight: bold;
+        letter-spacing: 1px;
+        margin-top: 50%;
         font-family: Poppins;
         font-size: 48px;
         color: #ffffff;
