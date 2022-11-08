@@ -38,7 +38,31 @@
 </template>
 
 <script setup>
-    
+    import {
+        getAuth,
+        onAuthStateChanged
+    } from '@firebase/auth';
+    import {
+        getFirestore,
+        writeBatch,
+        doc
+    } from "firebase/firestore";
+    import { ref } from 'vue';
+
+    const amount = ref("");
+    const receiver = ref("");
+    const db = getFirestore();
+    const auth = getAuth();
+    const batch = writeBatch(db);
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            const uid = user.uid;
+            console.log(uid)
+        } else {
+        }
+    });
+    //Enviar transaccion a receiver.value sacandolo con el uid de la base de datos
 </script>
 
 <style scoped>
