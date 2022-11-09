@@ -22,7 +22,7 @@
                         <input type="email" placeholder="Enter Receiver Email" v-model="receiver" id="receiver" required />
                     </div>
                     <div class="button">
-                        <button @click="submit" type="button" class="btn1">Submit</button>
+                        <button @click="transaction" type="button" class="btn1">Submit</button>
                     </div>
                     <div class="back">
                         <router-link to="/home">
@@ -44,25 +44,53 @@
     } from '@firebase/auth';
     import {
         getFirestore,
-        writeBatch,
-        doc
+        doc,
+        getDoc,
+        updateDoc,
+        increment
     } from "firebase/firestore";
     import { ref } from 'vue';
 
     const amount = ref("");
     const receiver = ref("");
-    const db = getFirestore();
     const auth = getAuth();
-    const batch = writeBatch(db);
+    const db = getFirestore();
 
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            const uid = user.uid;
-            console.log(uid)
-        } else {
-        }
-    });
-    //Enviar transaccion a receiver.value sacandolo con el uid de la base de datos
+
+    const transaction = () => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                const uid = user.uid;
+                console.log(uid)
+                
+                getDoc(doc(db, "users", user.email)).then(docSnap => {
+                    if (docSnap.exists()) {
+                        console.log("Document data:", docSnap.data());
+                        const value = docSnap.get("balance");
+                        
+                        const ownUserRef = doc(db, "users", user.email)
+                        const receiverRef = doc(db, "users", receiver.value);
+
+                        if (amount.value > value) {
+                            alert ("no balance")
+                        } else {
+                            updateDoc(receiverRef, {
+                                balance: increment(amount.value)
+                            });
+                            updateDoc(ownUserRef, {
+                                balance: increment(-amount.value)
+                            });
+                            console.log("succesful")
+                        }
+                    } else {
+                        console.log("No such document!");
+                    }
+                })
+            } else {
+            }
+        });
+        //Enviar transaccion a receiver.value sacandolo con el uid de la base de datos
+    }
 </script>
 
 <style scoped>

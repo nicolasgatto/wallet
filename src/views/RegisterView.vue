@@ -66,7 +66,7 @@
                 console.log("Registered User Email: ", user.email)
                 console.log("Registered User UID: ", user.uid)
                 try {
-                    const docRef = setDoc(doc(db, "users", user.uid), {
+                    const docRef = setDoc(doc(db, "users", user.email), {
                         email: email.value,
                         balance: 100000,
                         id: user.uid
@@ -74,7 +74,7 @@
                     console.log("Document written with ID: ", docRef.id);
                     } catch (e) {
                     console.error("Error adding document: ", e);
-                    }
+                }
                 router.push('/login')
             })
             .catch((error) => {

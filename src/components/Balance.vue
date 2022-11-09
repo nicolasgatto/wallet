@@ -2,6 +2,7 @@
     <div class="container">
         <div class="balance">
             <span id="balance" class="d-flex justify-content-center"></span>
+            <span id="balance2" class="d-flex justify-content-center"></span>
         </div>
     </div>
 </template>
@@ -24,7 +25,7 @@
         if (user) {
             const uid = user.uid;
 
-            getDoc(doc(db, "users", uid)).then(docSnap => {
+            getDoc(doc(db, "users", user.email)).then(docSnap => {
                 if (docSnap.exists()) {
                     console.log("Document data:", docSnap.data());
                     const value = docSnap.get("balance");
@@ -39,8 +40,8 @@
     });
 </script>
 
-<style scoped>
-    span{
+<style>
+    .balance{
         font-weight: bold;
         letter-spacing: 1px;
         margin-top: 50%;
